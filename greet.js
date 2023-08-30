@@ -2,4 +2,11 @@ function greet(name) {
   return `Hola ${name}`;
 }
 
-module.exports = greet;
+function helloToAll() {
+  return 'Hola a todos !!!';
+}
+
+module.exports = {
+  greet, 
+  helloToAll
+}
