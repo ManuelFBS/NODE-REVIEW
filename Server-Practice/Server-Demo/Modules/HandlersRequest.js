@@ -27,9 +27,27 @@ const handlePostRequest = (req, res) => {
 
   switch (path) {
     case '/api/cursos/programacion':
-      return res.end(
-        'El servidor recibió una solicitud POST para "/api/cursos/programacion"'
-      )
+      let body = ''
+
+      req.on('data', (content) => {
+        body += content.toString()
+      })
+
+      req.on('end', () => {
+        console.log(body)
+        console.log(typeof body)
+
+        // Convertir a un objeta JavaScript...
+        body = JSON.parse(body)
+
+        console.log(typeof body)
+        console.log(body.titulo)
+
+        res.end(
+          'El servidor recibió una solicitud POST para "/api/cursos/programacion"'
+        )
+      })
+      break
     default:
       res.statusCode = 400
       return res.end('Ha ocurrido un error al tratar de realizar el POST...!')

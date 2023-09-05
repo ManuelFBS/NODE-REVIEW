@@ -1,6 +1,25 @@
-# GET http://localhost:3000/api/cursos/programacion
-# POST http://localhost:3000/api/cursos/programacion
-# PUT http://localhost:3000/api/cursos/programacion
-# DELETE http://localhost:3000/api/cursos/programacion
-# OPTIONS http://localhost:3000/
+GET http://localhost:3000/api/cursos/programacion
+
+###
+
+POST http://localhost:3000/api/cursos/programacion HTTP/1.1
+Content-Type: application/json
+
+{
+  "titulo": "Aprende Node.js"
+}
+
+###
+
+PUT http://localhost:3000/api/cursos/programacion
+
+###
+DELETE http://localhost:3000/api/cursos/programacion
+
+###
+
+OPTIONS http://localhost:3000/
+
+###
+
 TRACE http://localhost:3000/

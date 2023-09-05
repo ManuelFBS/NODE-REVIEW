@@ -1,6 +1,5 @@
 const PORT = 3000
 const http = require('http')
-// const { infoCursos } = require('./cursos.js')
 
 const {
   handleGetRequest,
