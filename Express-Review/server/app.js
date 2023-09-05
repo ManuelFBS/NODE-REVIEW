@@ -1,14 +1,14 @@
 const express = require('express')
-// const PORT = 3000
-const { PORT } = process.env
 const { infoCursos } = require('../api/cursos.js')
 
 const server = express()
 
 server.get('/', (req, res) => {
-  res.send('Mi primer servidor... Cursos 💻.')
+  res.send('Mi primer servidor con Express y Node.js... Cursos 💻.')
 })
 
-server.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`)
+const APPORT = process.env.PORT || 3000
+
+server.listen(APPORT, () => {
+  console.log(`Listening on port: ${APPORT}`)
 })
