@@ -1,5 +1,6 @@
 const express = require('express')
 const { infoCursos } = require('../api/cursos.js')
+const { sortsMinToMax } = require('../utils/Sorts.js')
 
 const server = express()
 
@@ -30,14 +31,7 @@ server.get('/api/cursos/programacion/:lenguaje', (req, res) => {
     return res.status(404).send(`No se encontraron cursos de: ${lenguaje}`)
   }
 
-  if (req.query.ordenar === 'vistas') {
-    // Se establece un ordenamiento de menor a mayor...
-    return res
-      .status(200)
-      .send(JSON.stringify(results.sort((a, b) => a.vistas - b.vistas)))
-  }
-
-  res.status(200).send(JSON.stringify(results))
+  sortsMinToMax(results, req, res, 'vistas')
 })
 
 server.get('/api/cursos/matematicas/:tema', (req, res) => {
