@@ -1,17 +1,15 @@
 const express = require('express')
-const { infoCursos } = require('../../data/cursos.js')
+const { programacion } = require('../../data/cursos.js').infoCursos
 const routerProgramacion = express.Router()
 const { sortsMinToMax } = require('../../utils/Sorts.js')
 
 routerProgramacion.get('/', (req, res) => {
-  res.send(JSON.stringify(infoCursos.programacion))
+  res.send(JSON.stringify(programacion))
 })
 
 routerProgramacion.get('/:lenguaje', (req, res) => {
   const lenguaje = req.params.lenguaje
-  const results = infoCursos.programacion.filter(
-    (curso) => curso.lenguaje === lenguaje
-  )
+  const results = programacion.filter((curso) => curso.lenguaje === lenguaje)
 
   if (results.length === 0) {
     return res.status(404).send(`No se encontraron cursos de: ${lenguaje}`)
@@ -25,7 +23,7 @@ routerProgramacion.get('/:lenguaje/:nivel', (req, res) => {
   const lenguaje = req.params.lenguaje
   const nivel = req.params.nivel
 
-  const results = infoCursos.programacion.filter(
+  const results = programacion.filter(
     (curso) => curso.lenguaje === lenguaje && curso.nivel === nivel
   )
 
