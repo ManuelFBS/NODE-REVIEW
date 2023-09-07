@@ -3,6 +3,9 @@ const { programacion } = require('../../data/cursos.js').infoCursos
 const routerProgramacion = express.Router()
 const { sortsMinToMax } = require('../../utils/Sorts.js')
 
+// Middleware...
+routerProgramacion.use(express.json())
+
 routerProgramacion.get('/', (req, res) => {
   res.send(JSON.stringify(programacion))
 })
@@ -34,6 +37,13 @@ routerProgramacion.get('/:lenguaje/:nivel', (req, res) => {
   }
 
   res.status(200).send(results)
+})
+
+routerProgramacion.post('/', (req, res) => {
+  let newCourse = req.body
+
+  programacion.push(newCourse)
+  res.status(201).send(JSON.stringify(programacion))
 })
 
 module.exports = {
