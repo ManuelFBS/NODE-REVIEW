@@ -31,7 +31,8 @@ server.get('/api/cursos/programacion/:lenguaje', (req, res) => {
     return res.status(404).send(`No se encontraron cursos de: ${lenguaje}`)
   }
 
-  sortsMinToMax(results, req, res, 'vistas')
+  if (req.query.ordenar === 'vistas') sortsMinToMax(results, res)
+  else return res.status(200).send(JSON.stringify(results))
 })
 
 server.get('/api/cursos/matematicas/:tema', (req, res) => {
@@ -42,7 +43,8 @@ server.get('/api/cursos/matematicas/:tema', (req, res) => {
     return res.status(404).send(`No se encontraron temas de: ${tema}`)
   }
 
-  res.status(200).send(JSON.stringify(results))
+  if (req.query.ordenar === 'vistas') sortsMinToMax(results, res)
+  else res.status(200).send(JSON.stringify(results))
 })
 // --------------------------------
 server.get('/api/cursos/programacion/:lenguaje/:nivel', (req, res) => {
@@ -62,6 +64,7 @@ server.get('/api/cursos/programacion/:lenguaje/:nivel', (req, res) => {
   res.status(200).send(results)
 })
 // -----------------------------------------------------------------------------------------
+
 const APPORT = process.env.PORT || 3000
 
 server.listen(APPORT, () => {
