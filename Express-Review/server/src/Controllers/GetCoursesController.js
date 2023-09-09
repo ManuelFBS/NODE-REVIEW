@@ -13,14 +13,16 @@ const getProgramCourseController = () => {
 const getMathCourseController = () => {
   return matematicas
 }
-// const getLanguageController = (lenguaje) => {
-//   const results = programacion.filter((course) => course.lenguaje === lenguaje)
 
-//   return results
-// }
+const getProgLanguageController = (lenguaje) => {
+  const results = programacion.filter((course) => course.lenguaje === lenguaje)
+
+  return results
+}
 
 module.exports = {
   getAllCoursesController,
   getProgramCourseController,
-  getMathCourseController
+  getMathCourseController,
+  getProgLanguageController
 }

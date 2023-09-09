@@ -1,7 +1,8 @@
 const {
   getAllCoursesController,
   getProgramCourseController,
-  getMathCourseController
+  getMathCourseController,
+  getProgLanguageController
 } = require('../Controllers/GetCoursesController')
 
 const getAllCoursesHandler = (req, res) => {
@@ -30,20 +31,22 @@ const getMathHandler = (req, res) => {
     return res.status(404).json({ error: error.message })
   }
 }
-// const getLanguageHandler = (req, res) => {
-//   const language = req.params
-//   try {
-//     const results = getLanguageController(language)
 
-//     if (req.query.ordenar === 'vistas') sortsMinToMax(results, res)
-//     else return res.status(200).send(results)
-//   } catch (error) {
-//     return res.status(404).send(`No se ha encontrado el recurso: ${language}`)
-//   }
-// }
+const getProgLanguageHandler = (req, res) => {
+  const language = req.params
+  try {
+    const results = getProgLanguageController(language)
+
+    if (req.query.ordenar === 'vistas') sortsMinToMax(results, res)
+    else return res.status(200).send(results)
+  } catch (error) {
+    return res.status(404).send(`No se ha encontrado el recurso: ${language}`)
+  }
+}
 
 module.exports = {
   getAllCoursesHandler,
   getProgramHandler,
-  getMathHandler
+  getMathHandler,
+  getProgLanguageHandler
 }
