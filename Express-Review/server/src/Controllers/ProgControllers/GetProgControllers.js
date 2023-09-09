@@ -10,7 +10,20 @@ const getProgLanguageController = (lenguaje) => {
   return results
 }
 
+const getProgLevelLanguageController = (lenguaje, nivel) => {
+  const results = programacion.filter(
+    (curso) => curso.lenguaje === lenguaje && curso.nivel === nivel
+  )
+
+  if (results.length === 0) {
+    throw Error
+  }
+
+  return results
+}
+
 module.exports = {
   getProgramCourseController,
-  getProgLanguageController
+  getProgLanguageController,
+  getProgLevelLanguageController
 }
